@@ -14,7 +14,7 @@ app.use(cors({
 }));
 
 app.use('/', (req,res)=> {
-  res,status(200).json('HELLOE')
+  res.status(200).json('HELLOE')
 })
 
 
