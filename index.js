@@ -1,12 +1,23 @@
-const http = require('http');
+import express              from 'express';
+import cors                 from 'cors';
+import bodyParser from 'body-parser'
+
+
+const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
+app.use(cors({
+  origin: '*',
+  credentials: true
+}));
+
+app.use('/', (req,res)=> {
+  res,status(200).json('HELLOE')
+})
+
+
 const PORT = 3000;
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.status(200).json('Hello World!');
-});
-
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
-});
+app.listen(PORT, () => console.log(`server running on port ${PORT}`))
